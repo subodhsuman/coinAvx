@@ -3,8 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-// Bootstrap 
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap" 
 
-createApp(App).use(store).use(router).mount('#app')
+// pagination
+import Pagination from 'v-pagination-3'
+
+//Skeletor
+import { Skeletor } from "vue-skeletor";
+
+createApp(App).component(Skeletor.name, Skeletor).component('pagination', Pagination).use(store).use(router).mount('#app')
