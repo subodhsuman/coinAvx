@@ -6,7 +6,7 @@
                 <div class="col-xl-5 order-2 order-xl-1">
                     <div class="row cus_border_bottom">
                         <div class="col-md-6 col-xl-6 px-0 border_end">
-                            <CryptoListComponent />
+                            <CryptoListComponent  v-model="currencyData" />
                         </div>
                         <div class="col-md-6 col-xl-6  px-0 border_end">
                             <OrderDepthComponent />
@@ -21,10 +21,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-7 order-1 order-xl-2" >
+                <div class="col-xl-7 order-1 order-xl-2">
                     <div class="row">
                         <div class="col-xl-12">
-                            <DetailBarComponent />
+                            <DetailBarComponent v-model="currencyData"/>
                         </div>
                         <div class="col-xl-12">
                             <ChartComponent />
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+// import ApiClass from "@/api/api";
 import CryptoListComponent from '@/components/Exchange/CryptoListComponent.vue'
 import OrderDepthComponent from '@/components/Exchange/OrderDepthComponent.vue'
 import TradeHistoryComponent from '@/components/Exchange/TradeHistoryComponent.vue'
@@ -70,7 +71,35 @@ export default {
         BuySellComponent,
         OrderComponent
 
-    }
+    },
+    data: () => ({
+        currencyData: {
+            symbol: 'BTCUSDT',
+        },
+        // cryptData:{}
+    }),
+    watch:{
+        currencyData: function (v) {
+            this.currencyData = v;
+            // console.log("value of exchange",this.currencyData);
+        },
+    },
+    //     async created() {
+    //     let res = await ApiClass.getNodeRequest("dashboard/all-symbols", false);
+
+    //     var isPresent = res?.data.data.find((s) => s == this.$route.query.s)
+    //         ? true
+    //         : false; //symbol is there
+    //     if (isPresent) {
+    //         this.currencyData.symbol = this.$route.query.s;
+    //     } else {
+    //         this.currencyData.symbol = "BTCUSDT";
+    //         this.$router.push("/exchange");
+    //     }
+    // },
+
+
+ 
 }
 </script>
 
