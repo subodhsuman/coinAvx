@@ -16,21 +16,24 @@
                     <div class="col-md-6 col-lg-5 col-xl-5 mb-5">
                         <label for="basic-url" class="form-label">Referral Link</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control border-end-0 shadow-none" placeholder="http://demo.coinavx/register?referral=FNX_7ogopju1jc" id="basic-url" aria-describedby="basic-addon3">
-                            <span  class="input-group-text border-start-0" id="basic-addon2" style="cursor: pointer;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12.158" height="14.078" viewBox="0 0 12.158 14.078">
-                                    <path id="Icon_material-content-copy" data-name="Icon material-content-copy" d="M11.959,1.5H4.28A1.284,1.284,0,0,0,3,2.78v8.959H4.28V2.78h7.679Zm1.92,2.56H6.839a1.284,1.284,0,0,0-1.28,1.28V14.3a1.284,1.284,0,0,0,1.28,1.28h7.039a1.284,1.284,0,0,0,1.28-1.28V5.339A1.284,1.284,0,0,0,13.878,4.06Zm0,10.238H6.839V5.339h7.039Z" transform="translate(-3 -1.5)" fill="var(--avx-white)" />
+                            <input type="text" class="form-control border-end-0 shadow-none" id="copy_code"  v-on:focus="$event.target.select()" 
+                        ref="clone"  v-model="referral_link" readonly  aria-describedby="basic-addon3">
+                            <span v-if="!load" @click="copy"   class="input-group-text border-start-0"  id="basic-addon2" style="cursor: pointer;">
+                                <svg xmlns="http://www.w3.org/2000/svg"    width="12.158" height="14.078" viewBox="0 0 12.158 14.078">
+                                    <path id="Icon_material-content-copy"  data-name="Icon material-content-copy" d="M11.959,1.5H4.28A1.284,1.284,0,0,0,3,2.78v8.959H4.28V2.78h7.679Zm1.92,2.56H6.839a1.284,1.284,0,0,0-1.28,1.28V14.3a1.284,1.284,0,0,0,1.28,1.28h7.039a1.284,1.284,0,0,0,1.28-1.28V5.339A1.284,1.284,0,0,0,13.878,4.06Zm0,10.238H6.839V5.339h7.039Z" transform="translate(-3 -1.5)" fill="var(--avx-white)" />
                                 </svg>
                                 &nbsp; copy
-                            </span>
+                            </span>   
+                            
                         </div>
                     </div>
 
                     <div class="col-md-6 col-lg-5 col-xl-5 mb-5">
                         <label for="basic-url" class="form-label">Referral Code</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control border-end-0 shadow-none" placeholder="gvfsvghhgfhdghfg" id="basic-url" aria-describedby="basic-addon3">
-                            <span  class="input-group-text border-start-0" id="basic-addon2" style="cursor: pointer;">
+                            <input type="text" class="form-control border-end-0 shadow-none"  id="copy_this" v-on:focus="$event.target.select()" 
+           ref="clone_code"  v-model="referral_code" readonly   aria-describedby="basic-addon3">
+                            <span @click="copy_code"  class="input-group-text border-start-0" id="basic-addon2" style="cursor: pointer;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12.158" height="14.078" viewBox="0 0 12.158 14.078">
                                     <path id="Icon_material-content-copy" data-name="Icon material-content-copy" d="M11.959,1.5H4.28A1.284,1.284,0,0,0,3,2.78v8.959H4.28V2.78h7.679Zm1.92,2.56H6.839a1.284,1.284,0,0,0-1.28,1.28V14.3a1.284,1.284,0,0,0,1.28,1.28h7.039a1.284,1.284,0,0,0,1.28-1.28V5.339A1.284,1.284,0,0,0,13.878,4.06Zm0,10.238H6.839V5.339h7.039Z" transform="translate(-3 -1.5)" fill="var(--avx-white)" />
                                 </svg>
@@ -60,6 +63,9 @@
                                         <td class="text-end  py-2"><span class="p-2 px-3">Verified</span> </td>
                                     </tr>
                                 </tbody>
+                                <tbody v-if="loading && ReferralData.length==0">
+                                    <td class="text-center" colspan="5"> No data found</td>
+                                </tbody>
                                 <!-- Skeletor Loader -->
                                 <tbody v-else>
                                     <tr v-for="i in 5" :key="i">
@@ -85,7 +91,7 @@
                     </div>
 
                     <div class="pagination_box d-flex justify-content-end mt-4" style="color:white">
-                        <pagination v-model="page" :records="recordData" :per-page="perPageData" :options="options" @paginate="referrals" />
+                        <pagination v-model="current_page" :records="ReferralData" :per-page="per_page_data" :options="options" @paginate="callback_function" /> 
                     </div>
                 </div>
 
@@ -100,6 +106,7 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
+import ApiClass from '@/Api/Api';
 export default {
     name: 'ReferralView',
     components: {
@@ -109,32 +116,83 @@ export default {
     },
     data() {
         return {
-            page: 1,
-            recordData: 3,
-            perPageData: 1,
-            loading: true,
-            ReferralData: [{
-                    username: 'Testerdemo',
-                    email: 'testingdemo@gmail.com',
-                    id: 'Admin Panel',
-                    time: '2022-04-01 , 4:53:24 am',
-                },
-                {
-                    username: 'Testerdemo',
-                    email: 'testingdemo@gmail.com',
-                    id: 'Admin Panel',
-                    time: '2022-04-01 , 4:53:24 am',
-                },
-                {
-                    username: 'Testerdemo',
-                    email: 'testingdemo@gmail.com',
-                    id: 'Admin Panel',
-                    time: '2022-04-01 , 4:53:24 am',
-                },
-
-            ],
-        }
+            route:null,
+            users:'',
+            user: "",
+            ReferralData: [],
+            referral_link: "",
+            referral_code: "",
+            load: false,
+            loading: false,
+            current_page: 1,
+            data_load: false,
+            record_data: null,
+            per_page_data: 10,
+            first_page_url: null,
+            prev_page_url: null,
+            next_page_url: null,
+            last_user_id:null,
+            inputdata:"checkref",
+            
+            
+           
+        };
     },
+    mounted(){
+        this.users = JSON.parse(localStorage.getItem('user'));
+        this.referral_link = ApiClass.VUE_DOMAIN + "register?referral=" + this.users.referral_code;
+        this.referral_code = this.users.referral_code;
+
+      this.callback_function();
+        // this.get();
+    },
+    onMounted() {
+        this.callback_function();
+        
+    },
+    methods:{
+        async callback_function() {
+            this.data_load = true;
+           if(!this.$route.query.url) {
+             let res = await ApiClass.getRequest(
+                "user/getReferrals?page=" + this.current_page + "&per_page=" + this.per_page_data,
+            );
+            // console.log(res);
+
+            if (res.data.status_code == 1) {
+                this.loading = true;
+                this.ReferralData = res.data.data.data;
+                this.record_data = res.data.data.data.total;
+                this.first_page_url = res.data.data.first_page_url;
+                this.next_page_url = res.data.data.next_page_url;
+                this.prev_page_url = res.data.data.prev_page_url;
+                this.per_page_data = res.data.data.per_page;               
+            }
+           }
+        },
+          copy() {
+            console.log("hihihihi");
+            var test=  document.getElementById("copy_code");
+        
+             test.select();
+
+      document.execCommand('copy');
+
+
+    },
+      copy_code() {
+        console.log("dgfxf");
+      var test=  document.getElementById("copy_this");
+        
+             test.select();
+
+      document.execCommand('copy');
+
+    }
+ 
+
+    }
+
 }
 </script>
 

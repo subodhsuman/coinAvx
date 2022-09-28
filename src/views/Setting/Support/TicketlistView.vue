@@ -14,7 +14,7 @@
                             <table class="table table-borderless align-middle">
                                 <thead>
                                     <tr class="text-center">
-                                        <th scope="col" class="ps-5 text-start">S.No</th>
+                                        <th scope="col" class="ps-5 text-start">S.No{{loading}}</th>
                                         <!-- <th scope="col">Pairs</th> -->
                                         <th scope="col">Ticket Type</th>
                                         <th scope="col">Title</th>
@@ -25,17 +25,18 @@
                                         <th scope="col" class="text-end pe-5">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody v-if="loading">
+                                <tbody v-if="!loading">
                                     <template v-if="data_found">
-                                        <tr class="text-center" v-for="(data,index) in Ticket_ListData" :key="index">
-                                            <td class="py-3 ps-5 text-uppercase text-start"> {{data.s_num}} </td>
+                                        <tr class="text-center" v-for="(data,index) in TicketData" @click="showTicket(data)" :key="index">
+                                            <!-- <td class="py-3 ps-5 text-uppercase text-start"> {{data.s_num}} </td> -->
                                             <!-- <td class="py-3 text-capitalize">{{data.pairs}} </td> -->
-                                            <td class="py-3">{{data.ticket_type}}</td>
-                                            <td class="py-3">{{data.title}}</td>
-                                            <td class="py-3">{{data.name}} </td>
-                                            <td class="py-3">{{data.mail}} </td>
-                                            <td class="py-3">{{data.generated_date}} <br> {{data.generated_time}} </td>
-                                            <td class="py-3">{{data.status}} </td>
+                                            <td>{{key}}</td>
+                                    <td>{{data.category.name}}</td>
+                                    <td>{{data.title}}</td>
+                                    <td>{{data.author_name}}</td>
+                                    <td>{{data.author_email}}</td>
+                                    <td>{{data.generated}}</td>
+                                    <td>{{data.status}}</td>
                                             
                                             <td class="text-end py-3 pe-5">
                                                 <router-link to="/ticket-modal">
@@ -94,9 +95,9 @@
                         </div>
                     </div>
 
-                    <div class="pagination_box d-flex justify-content-end mt-4" style="color:white">
-                        <pagination v-model="page" :records="recordData" :per-page="perPageData" :options="options" @paginate="referrals" />
-                    </div>
+                    <!-- <div class="pagination_box d-flex justify-content-end mt-4" style="color:white">
+                        <pagination v-model="page" :records="recordData" :per-page="perPageData" :options="options" @paginate="getTickets" />
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -108,6 +109,7 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SupportData from '@/assets/json/SupportData.json'
+import ApiClass from '@/Api/Api';
 export default {
     name: 'TicketlistView',
     components: {
@@ -116,14 +118,45 @@ export default {
     },
     data() {
         return {
+            TicketData:[],
             data_found: true,
             page: 1,
             recordData: 3,
-            perPageData: 1,
+            perPageData: 2,
             loading: true,
             Ticket_ListData: SupportData.Ticket_ListData
 
         }
+    },
+       mounted(){
+        this.getTickets();
+    },
+     methods: {
+        async getTickets() {
+            this.loading = true;
+            let response = await ApiClass.getRequest("ticket/get", true);
+            if (response?.data) {
+               
+                if (response.data.status_code == 1) {
+                    this.TicketData = response.data.data; 
+                    this.paginated = response.data.data; 
+                    console.log(this.TicketData);
+                    this.loading=false
+                    if (this.TicketData.length == 0) {
+                       return  this.failed("NO DATA FOUND");
+
+                    }
+                }
+                if (response.data.status_code == 0) {
+                    this.failed(response.data.message);
+                }
+            }
+        },
+       
+
+        showTicket(data) {
+            this.$store.commit("SET_TicketData",data.id );
+        },
     },
 }
 </script>
@@ -153,6 +186,7 @@ table thead tr {
     font-weight: 500;
     font-size: 14px;
 }
+
 
 .ticket-list-table tbody tr td {
     font-weight: 500;

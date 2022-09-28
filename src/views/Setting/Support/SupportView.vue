@@ -31,7 +31,7 @@
                                 <button type="button" class="btn_back px-4">view previous tickets</button>
                             </router-link>
                             <router-link to="/contact-us">
-                                <button type="button" class="btn_avx px-4">CONTECT US</button>
+                                <button type="button" class="btn_avx px-4">CONTACT US</button>
                             </router-link>
                         </div>
                     </div>

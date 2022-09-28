@@ -44,7 +44,7 @@ let routes = [{
             import ( /* webpackChunkName: "forgot-password" */ '../views/Auth/ForgotpasswordView.vue')
     },
     {
-        path: '/veification',
+        path: '/verification',
         name: 'VeificationView',
         component: () =>
             import ( /* webpackChunkName: "veification" */ '../views/Auth/VeificationView.vue')

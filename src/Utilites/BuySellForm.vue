@@ -43,7 +43,7 @@
         <!-- BUY SELL BUTTON -->
         <div class="col-xl-12">
             <button type="button text-uppercase" :class="order_side == 'buy' ? 'btn-green' : 'btn-red'" class="btn_avx w-100">
-                {{order_side == 'buy'  ? 'buy' + currency : 'sell' + currency}}
+                {{order_side == 'buy'  ? 'buy  ' + currency : 'sell  ' + currency}}
             </button>
         </div>
     </form>

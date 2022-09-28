@@ -9,15 +9,21 @@
   },
   "dependencies": {
     "@vueform/slider": "^2.1.2",
+    "@vuelidate/core": "^2.0.0-alpha.44",
+    "@vuelidate/validators": "^2.0.0-alpha.31",
     "bootstrap": "^5.2.1",
     "core-js": "^3.8.3",
+    "moment": "^2.29.4",
+    "sweetalert2": "^11.4.35",
     "v-pagination-3": "^0.1.7",
     "vue": "^3.2.13",
+    "vue-recaptcha": "^2.0.3",
     "vue-router": "^4.0.3",
     "vue-skeletor": "^1.0.6",
     "vue-slider-component": "^3.2.20",
     "vue3-otp-input": "^0.3.6",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

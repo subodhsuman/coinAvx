@@ -17,16 +17,19 @@
                         <!-- EMAIL -->
                         <div class="col-xl-8">
                             <div class=" mb-4">
-                                <label for="basic-url" class="form-label">Email*</label>
+                                <label for="basic-url"  class="form-label">Email*</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                    <input type="text" v-model="email" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                     <div class="input-errors" v-for="error of v$.email.$errors" :key="error.$uid">
+    <div class="error-msg">{{ error.$message }}</div>
+  </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- GET OTP veification veification-->
                         <div class="col-xl-8 text-center my-3">
-                            <router-link to="/veification"> <button type="button" class="btn_avx w-100" > GET OTP </button>  </router-link>
+                           <button @click="verify" type="button" class="btn_avx w-100" > GET OTP </button>  
                             
                             <!-- loader -->
                             <button class="btn_avx w-100" type="button" disabled v-if="loading">
@@ -47,16 +50,47 @@
     
 <script>
 import AuthLeftComponents from '@/components/auth_components/AuthLeftComponents.vue'
+import ApiClass from '@/Api/Api'
+import { useVuelidate } from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+import router from '@/router'
 export default {
     name: 'ForgotpasswordView',
     components: {
         AuthLeftComponents
     },
+     setup () {
+    return { v$: useVuelidate() }
+  },
     data() {
         return {
             loading: false,
+            email:''
         }
     },
+    
+    methods:{
+        async verify(){
+              let result =  await this.v$.email.$validate();
+         console.log(result);
+         if(result){
+         let res=  await ApiClass.postRequest('forgotpassword',false,{"email":this.email})
+
+         if(res.data.status_code==1)
+           {console.log("this");
+           router.push('/verification')}
+
+console.log(this.email);
+        }
+        }
+    },
+     validations () {
+    return {
+      
+       email: { required, email } // Matches this.contact.email
+      
+    }
+     },
 }
 </script>
 

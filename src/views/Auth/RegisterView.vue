@@ -26,7 +26,7 @@
                         <!-- PASSWORD -->
                         <div class="col-xl-8">
                             <div class="mb-4">
-                                <label for="basic-url" class="form-label">Paasword</label>
+                                <label for="basic-url" class="form-label">Password</label>
                                 <div class="input-group mb-3">
                                     <!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                                     <span class="input-group-text" id="basic-addon3">REST</span> -->
@@ -39,7 +39,7 @@
                         <!-- CONFIRM PASSWORD -->
                         <div class="col-xl-8">
                             <div class="mb-4">
-                                <label for="basic-url" class="form-label">Confirm Paasword</label>
+                                <label for="basic-url" class="form-label">Confirm Password</label>
                                 <div class="input-group">
                                     <input :type="hidden2 ? 'password':'text'" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                                     <span @click="hidden2 = !hidden2" class="input-group-text" v-html="hidden2 ? this.hide:this.show" id="basic-addon3"></span>

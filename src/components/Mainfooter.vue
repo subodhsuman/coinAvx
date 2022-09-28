@@ -3,7 +3,7 @@
     <footer class="footer_section">
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4">
+                <div class="col-sm-7  col-md-5 col-lg-4 col-xl-4">
                     <div class="main_footer_box">
                         <div class="mb-lg-3 mb-4">
                             <router-link to="/"><img src="@/assets/images/landing-page/banner/logo.png" alt="logo_img" class="img-fluid"></router-link>
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-lg-2 col-xl-2">
+                <div class=" col-sm-5 col-md-3 col-lg-2 col-xl-2">
                     <div class="about_headings">
                         <h3 class="text-uppercase">
                             About Us
@@ -48,7 +48,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 col-lg-2 col-xl-2">
+                <div class="col-sm-5 col-md-3 col-lg-2 col-xl-2">
                     <div class="about_headings">
                         <h3 class="text-uppercase">
                             Products
@@ -56,7 +56,7 @@
                         <ul class="list-unstyled">
                             <li> Exchange</li>
                             <li>NFT</li>
-                            <li>gold trading</li>
+                            <li>Gold Trading</li>
                             <li>Card</li>
                             <li>Labs</li>
                             <li>Launchpad</li>
@@ -64,7 +64,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-2 col-xl-2">
+                <div class="col-sm-5 col-md-4 col-lg-2 col-xl-2">
                     <div class="about_headings">
                         <h3 class="text-uppercase">
                             Service

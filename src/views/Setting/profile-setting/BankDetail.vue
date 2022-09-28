@@ -7,141 +7,197 @@
                 <div class="head">
                     <SettingHeading main_heading="PROFILE SETTING"> </SettingHeading>
                 </div>
-                <div class="row p-md-5 p-2">
-                    <!-- add and remove buttons -->
-                    <div class="col-md-12 col-lg-12 col-xl-12 ">
-                        <div class="setting_sub_heading d-md-flex d-block justify-content-between align-items-center">
-                            <SubHeading sub_heading="Bank Details"> </SubHeading>
-                            <div class="d-flex gap-md-4 gap-2 mb-3 mb-md-0">
-                                <!-- Add bank button -->
-                                <router-link to="/add-bank">
-                                    <button type="button" class="btn_add btn_avx rounded px-md-4 px-2">
-                                        <img src="../../../assets/images/icons/plus.svg" alt="icon"> Add</button>
-                                </router-link>
-                                <!-- Remove bank button -->
-                                <button type="button" class="btn_remove btn_avx rounded px-md-4 px-2" data-bs-toggle="modal" data-bs-target="#addbankModal">
-                                    <img src="../../../assets/images/icons/minus.svg" alt="icon"> Remove</button>
-                            </div>
-                        </div>
-                    </div>
+               <div class="setting_content p-md-4 p-2 px-md-5 px-3">
+                 <SubHeading sub_heading="Bank Details"> </SubHeading>
+                <!-- FORM -->
+                <div class="row">
+                    <div class="col-xl-10 col-xxl-8">
+                        <form class="row justify-content-center bank_box">
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item w-50" role="presentation">
+                                    <button class="nav-link active w-100" id="pills-bank-tab" data-bs-toggle="pill" data-bs-target="#pills-bank" type="button" role="tab" aria-controls="pills-bank" aria-selected="true">Bank Account</button>
+                                </li>
+                                <li class="nav-item w-50" role="presentation">
+                                    <button class="nav-link w-100" id="pills-upi-tab" data-bs-toggle="pill" data-bs-target="#pills-upi" type="button" role="tab" aria-controls="pills-upi" aria-selected="false">UPI</button>
+                                </li>
 
-                    <div class="col-md-12 col-lg-12 col-xl-12 ">
-                        <!-- NAV PILLS HEADING -->
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-bank-tab" data-bs-toggle="pill" data-bs-target="#pills-bank" type="button" role="tab" aria-controls="pills-bank" aria-selected="true">Bank</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-upi-tab" data-bs-toggle="pill" data-bs-target="#pills-upi" type="button" role="tab" aria-controls="pills-upi" aria-selected="false">UPI </button>
-                            </li>
+                            </ul>
+                            <div class="tab-content p-md-4 p-md-2" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-bank" role="tabpanel" aria-labelledby="pills-bank-tab">
+                                    <div class="row align-items-center">
+                                    <!-- ____________Back and Next Buttons _________ -->
+                                    <div class="col-xl-12">
+                                        <ul class="list-unstyled d-flex mb-4 justify-content-between">
+                                        
+                                            <li>
+                                                   <div class="heading_accordion">
+                                                 <h6 class="ac-detail">Your Bank Account Details For IMPS Payments</h6>
+                                          
+                                        </div>
+                                            </li>
+                                                <li>
+                                                <router-link to="/add-bank">
+                                                    <button type="button" class="me-3 btn_next">
+                                                        Add New
+                                                    </button>
+                                                </router-link>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <!-- =========== Bank  Account  =========== -->
+                                    <div class="col-xl-12">
+                                        <div class="bank_accordion accordion mb-5" id="accordionExample" v-for="(data,index) in BankDetailData" :key="index">
+                                            <div class="accordion-item mb-3"  >
+                                                <h2 class="accordion-header" :id="'headingTwo'+index">
+                                                    <div class="d-flex">
+                                                    <button class="accordion-button shadow-none collapsed p-2" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapseTwo11'+index" aria-expanded="false" :aria-controls="'#collapseTwo11'+index">
+                                                        Bank account - {{ data.account_number.substring(data.account_number.length - 4)}}
+                                                        <span> <button type="button" class="btn edit_btn p-0 ms-2" data-bs-toggle="modal" data-bs-target="#edit_bank">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="15px" width="15px" style="fill: var(--px-white)" viewBox="0 0 512 512">
+                                                                    <path d="M490.3 40.4C512.2 62.27 512.2 97.73 490.3 119.6L460.3 149.7L362.3 51.72L392.4 21.66C414.3-.2135 449.7-.2135 471.6 21.66L490.3 40.4zM172.4 241.7L339.7 74.34L437.7 172.3L270.3 339.6C264.2 345.8 256.7 350.4 248.4 353.2L159.6 382.8C150.1 385.6 141.5 383.4 135 376.1C128.6 370.5 126.4 361 129.2 352.4L158.8 263.6C161.6 255.3 166.2 247.8 172.4 241.7V241.7zM192 63.1C209.7 63.1 224 78.33 224 95.1C224 113.7 209.7 127.1 192 127.1H96C78.33 127.1 64 142.3 64 159.1V416C64 433.7 78.33 448 96 448H352C369.7 448 384 433.7 384 416V319.1C384 302.3 398.3 287.1 416 287.1C433.7 287.1 448 302.3 448 319.1V416C448 469 405 512 352 512H96C42.98 512 0 469 0 416V159.1C0 106.1 42.98 63.1 96 63.1H192z" /></svg>
+                                                            </button> </span>
+                                                             <span class="badge ">{{data.verify_status}}</span>
+                                                    </button>
+                                            
+                                                     </div>
+                                                </h2>
+                                                <div :id="'collapseTwo11'+index" class="accordion-collapse collapse" :aria-labelledby="'headingTwo'+index" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                         <div class="col-xl-12">
+                                    
 
-                        </ul>
-                        <!-- TAB CONTENT -->
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-bank" role="tabpanel" aria-labelledby="pills-bank-tab">
-                                <div class="bank-detail-table table-responsive">
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="ps-5">Account Number</th>
-                                                <th scope="col">IFSC Code</th>
-                                                <th scope="col" class="text-end pe-5">Account Type</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody v-if="loading">
-                                            <tr v-for="(data,index) in BankDetailData" :key="index">
-                                                <td class="ps-5 py-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input shadow-none" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            {{data.account_num}}
-                                                        </label>
+                                        <div class="row justify-content-between  mb-4 mb-md-0">
+                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-md-3 col-lg-3 imps">
+                                                <div class="imps_payments">
+                                                    <span>Account Number</span>
+                                                    <p class="mt-1">{{data.account_number}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-md-3 col-lg-3 imps">
+                                                <div class="imps_payments">
+                                                    <span>IFSC Code</span>
+                                                    <p class="mt-1">{{data.ifsc_code}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-md-3 col-lg-3">
+                                                <div class="imps_payments">
+                                                    <span>Account Type</span>
+                                                    <p class="mt-1">{{data.account_type}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-md-2 col-lg-2">
+                                               <button type="button" @click="removeAccount(data.id)" class=" btn_back" data-bs-toggle="modal" data-bs-target="#remove_bank">
+                                            Remove
+                                                </button>
+
+                                            </div>
+                                        </div>
+
+                                                          </div>
                                                     </div>
-                                                </td>
-                                                <td class=" py-2">{{data.ifsc_code}}</td>
-                                                <td class="text-end pe-5 py-2">{{data.account_type}}</td>
-                                            </tr>
-                                           <tr class="text-end">
-                                            <td colspan="8">
-                                              <div class="d-flex gap-4 justify-content-end my-5">
-                                                <button type="button" class="btn_back"> Cancel</button>
-                                              <button type="button" class="btn_next"> Submit</button>
-                                              </div>
-                                            </td>
-                                           </tr>
+                                                </div>
+                                            </div>
+                                         
 
-                                        </tbody>
-                                        <!-- Skeletor Loader -->
-                                        <tbody v-else>
-                                            <tr v-for="i in 5" :key="i">
-                                                <td style="flex-basis:33.3%;">
-                                                    <Skeletor />
-                                                </td>
-                                                <td style="flex-basis:33.3%">
-                                                    <Skeletor />
-                                                </td>
-                                                <td style="flex-basis:33.3%">
-                                                    <Skeletor />
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        </div>
+                                    </div>
+                                      </div>
+                                    <!-- ===========  Account Details For IMPS Payments  =========== -->
+                                  
+
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="pills-upi" role="tabpanel" aria-labelledby="pills-upi-tab">
 
-                                <div class="bank-detail-table table-responsive">
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="ps-5">S.No</th>
-                                                <th scope="col">UPI ID </th>
-                                                <th scope="col" class="text-end pe-5">Name</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody v-if="loading">
-                                            <tr v-for="(data,index) in UpiDetailData" :key="index">
-                                                <td class="ps-5 py-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input shadow-none" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            {{data.sr_num}}
-                                                        </label>
+                                <!-- Add Your UPI/VPN ID for UPi Payments -->
+                                <div class="tab-pane fade" id="pills-upi" role="tabpanel" aria-labelledby="pills-upi-tab">
+                                    <div class="row align-items-center">
+                                        <div class="col-xl-12">
+                                        <ul class="list-unstyled d-flex mb-4 justify-content-between">
+                                        
+                                            <li>
+                                                   <div class="heading_accordion">
+                                                 <h6 class="ac-detail">Your Bank Account Details For IMPS Payments</h6>
+                                          
+                                        </div>
+                                            </li>
+                                                <li>
+                                                <router-link to="/add-bank">
+                                                    <button type="button" class="me-3 btn_next">
+                                                        Add New
+                                                    </button>
+                                                </router-link>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                    <!-- =========== Bank  Account  =========== -->
+                                    <div class="col-xl-12">
+                                        <div class="bank_accordion accordion mb-5" id="accordionExample" >
+                                            <div class="accordion-item mb-3" v-for="(data,index) in ApiDetailData" :key="index">
+                                                <h2 class="accordion-header" :id="'headingTwo'+index">
+                                                    <div class="d-flex">
+                                                    <button class="accordion-button shadow-none collapsed p-2" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapseTwo11'+index" aria-expanded="false" :aria-controls="'#collapseTwo11'+index">
+                                                        UPI ID - {{data.upi_id}}
+                                                        <span> <button type="button" class="btn edit_btn p-0 ms-2" data-bs-toggle="modal" data-bs-target="#edit_bank">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="15px" width="15px" style="fill: var(--px-white)" viewBox="0 0 512 512">
+                                                                    <path d="M490.3 40.4C512.2 62.27 512.2 97.73 490.3 119.6L460.3 149.7L362.3 51.72L392.4 21.66C414.3-.2135 449.7-.2135 471.6 21.66L490.3 40.4zM172.4 241.7L339.7 74.34L437.7 172.3L270.3 339.6C264.2 345.8 256.7 350.4 248.4 353.2L159.6 382.8C150.1 385.6 141.5 383.4 135 376.1C128.6 370.5 126.4 361 129.2 352.4L158.8 263.6C161.6 255.3 166.2 247.8 172.4 241.7V241.7zM192 63.1C209.7 63.1 224 78.33 224 95.1C224 113.7 209.7 127.1 192 127.1H96C78.33 127.1 64 142.3 64 159.1V416C64 433.7 78.33 448 96 448H352C369.7 448 384 433.7 384 416V319.1C384 302.3 398.3 287.1 416 287.1C433.7 287.1 448 302.3 448 319.1V416C448 469 405 512 352 512H96C42.98 512 0 469 0 416V159.1C0 106.1 42.98 63.1 96 63.1H192z" /></svg>
+                                                            </button> </span>
+                                                             <span class="badge ">{{data.verify_status}}</span>
+                                                    </button>
+                                            
+                                                     </div>
+                                                </h2>
+                                                <div :id="'collapseTwo11'+index" class="accordion-collapse collapse" :aria-labelledby="'headingTwo'+index" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                         <div class="col-xl-12">
+                                    
+
+                                        <div class="row justify-content-between  mb-4 mb-md-0">
+                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-md-3 col-lg-3 imps">
+                                                <div class="imps_payments">
+                                                    <span>Alias</span>
+                                                    <p class="mt-1">{{data.alias}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-md-3 col-lg-3 imps">
+                                                <div class="imps_payments">
+                                                    <span>UPI Id</span>
+                                                    <p class="mt-1">{{data.upi_id}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-md-3 col-lg-3 text-center">
+                                               <button @click="removeUpi" type="button"    class=" btn_back" data-bs-toggle="modal" data-bs-target="#remove_bank">
+                                              Remove
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                        
+
+                                                          </div>
                                                     </div>
-                                                </td>
-                                                <td class=" py-2">{{data.upi_id}}</td>
-                                                <td class="text-end pe-5 py-2">{{data.name}}</td>
-                                            </tr>
-                                            <tr class="text-end">
-                                            <td colspan="8">
-                                              <div class="d-flex gap-4 justify-content-end my-5">
-                                                <button type="button" class="btn_back"> Cancel</button>
-                                              <button type="button" class="btn_next"> Submit</button>
-                                              </div>
-                                            </td>
-                                           </tr>
-                                        </tbody>
-                                        <!-- Skeletor Loader -->
-                                        <tbody v-else>
-                                            <tr v-for="i in 5" :key="i">
-                                                <td>
-                                                    <Skeletor />
-                                                </td>
-                                                <td>
-                                                    <Skeletor />
-                                                </td>
-                                                <td>
-                                                    <Skeletor />
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                                </div>
+                                            </div>
+                                              
 
-                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </SettingLayout>
@@ -178,6 +234,8 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
+import ApiClass from '@/Api/Api';
+import swal from "sweetalert2";
 export default {
     name: 'BankDetail',
     components: {
@@ -187,30 +245,115 @@ export default {
     },
     data() {
         return {
+             BankDetailData: '',
+             ApiDetailData:'',
             loading: true,
-            BankDetailData: [{
-                    account_num: '0123426578211122',
-                    ifsc_code: 'SBIN00023510',
-                    account_type: 'Savings'
-                },
-                {
-                    account_num: '0123426578211122',
-                    ifsc_code: 'SBIN00023510',
-                    account_type: 'Savings'
-                }
-            ],
-            UpiDetailData: [{
-                    sr_num: '1.',
-                    upi_id: 'SBIN00023510',
-                    name: 'Demoname'
-                },
-                {
-                    sr_num: '2.',
-                    upi_id: 'SBIN00023510',
-                    name: 'Demoname'
-                }
-            ]
+          
         }
+    },
+     mounted() {
+        this.skeletor=true
+        this.bankDetail()
+        this.apiDetail()
+    },
+
+    
+
+    methods:{
+                async bankDetail() {
+            
+            let response = await ApiClass.getRequest("userbanks/get", true)
+            this.BankDetailData = response.data.data
+
+            this.skeletor=false
+        },
+        removeUpi(id){
+             swal
+                .fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        this.apiRemove(id);
+                    }
+                });
+
+        },
+       async apiRemove(id){
+              let response = await ApiClass.deleteRequest("userupi/delete/" + id, true)
+            if (response?.data) {
+
+                if (response.data.status_code == "0") {
+                    //ERROR MESSAGE
+                    return this.failed(response.data.message);
+                }
+
+                if (response.data.status_code == "1") {
+                    //SUCCESS MESSAGE
+                    // this.success(response.data.message);
+
+                    //BANK DETAIL
+                    this.apiDetail();
+
+                    return;
+                }
+            }
+
+        },
+          removeAccount(id) {
+            swal
+                .fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        this.accountRemove(id);
+                    }
+                });
+        },
+
+             async accountRemove(id) {
+            let response = await ApiClass.deleteRequest("userbanks/delete/" + id, true)
+            if (response?.data) {
+
+                if (response.data.status_code == "0") {
+                    //ERROR MESSAGE
+                    return this.failed(response.data.message);
+                }
+
+                if (response.data.status_code == "1") {
+                    //SUCCESS MESSAGE
+                    // this.success(response.data.message);
+
+                    //BANK DETAIL
+                    this.bankDetail();
+
+                    return;
+                }
+            }
+        },
+           async apiDetail() {
+            
+            let response = await ApiClass.getRequest("userupi/get", true)
+            this.ApiDetailData = response.data.data
+
+            this.skeletor=false
+        },
+
+
+
     }
 }
 </script>
@@ -304,5 +447,51 @@ table thead tr {
     position: absolute;
     right: -3px;
     top: 20px;
+}
+.badge{
+    font-weight: 500;
+    line-height: 1;
+    color: var(--white);
+    text-align: end;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 15px;
+   margin-left: auto;
+       padding: 5px 14px;
+    background-color: var(--green);
+}
+.accordion-button::after{
+margin-left: unset;
+}
+.heading_accordion h6{
+     font-size: 15px;
+     font-weight: 500;
+    color: var(--avx-white);
+   
+}
+.accordion-item:last-of-type .accordion-button.collapsed{
+    background-color: var(--setting-bg)!important;
+    color: var(--avx-white);
+  border-radius: 5px;
+}
+.accordion-button::after{
+    background-image: url('@/assets/images/icons/arrow_bank.svg');
+}
+.accordion-button:not(.collapsed),
+.accordion-body{
+     background-color: var(--setting-bg)!important;
+    color: var(--avx-white);
+   
+}
+.accordion-item{
+    border: unset !important;
+    background-color: unset;
+ border: 1px solid var(--avx-yellow) !important;
+}
+.accordion-item:first-of-type .accordion-button
+{
+border-radius: 5px;
+ background-color: var(--setting-bg)!important;
+ color: var(--avx-white);
 }
 </style>

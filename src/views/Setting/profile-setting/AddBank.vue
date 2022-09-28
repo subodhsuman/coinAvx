@@ -9,7 +9,7 @@
                 </div>
                 <div class="setting_content  p-md-4 p-2  px-md-5 px-3 ">
                     <!-- _______________ADD BANK -->
-                    <form v-if="bank" action="" class="add_box px-0 px-md-4 py-5">
+                    <form v-if="bank" action="" class="add_box px-0 px-md-4 py-5"  @submit.prevent="addAccount">
                         <div class="row justify-content-between">
                             <div class="col-md-12 col-lg-12 col-xl-12 setting_sub_heading">
                                 <!-- sub heading -->
@@ -18,20 +18,40 @@
                             <div class="col-xl-3 mb-5">
                                 <label for="basic-url" class="form-label">Account Holder Name</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control shadow-none" placeholder="Name" id="basic-url" aria-describedby="basic-addon3">
+                                    <input type="text" v-model="alias" class="form-control shadow-none" placeholder="Name" id="basic-url" aria-describedby="basic-addon3">
                                 </div>
+                                <div class="input-errors" v-if="v$.alias.$errors && submitted" >
+
+                                                <div class="error-msg">{{ v$.alias.$errors[0]?.$message }}</div>
+                                            
+                                            </div>
+
+                                
+
                             </div>
                             <div class="col-xl-3 mb-5">
                                 <label for="basic-url" class="form-label">Account Number</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control shadow-none" placeholder="Account Number" id="basic-url" aria-describedby="basic-addon3">
+                                    <input type="text" class="form-control shadow-none" v-model="accountnumber" placeholder="Account Number" id="basic-url" aria-describedby="basic-addon3">
                                 </div>
+                                <div class="input-errors" v-if="v$.accountnumber.$errors && submitted" >
+
+                                                <div class="error-msg">{{ v$.accountnumber.$errors[0]?.$message }}</div>
+                                            
+                                            </div>
                             </div>
                             <div class="col-xl-3 mb-5">
                                 <label for="basic-url" class="form-label">Re-Enter Account Number</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control shadow-none" placeholder="Re-Enter Account Number" id="basic-url" aria-describedby="basic-addon3">
+                                    <input type="text" v-model="confirmaccountnumber" class="form-control shadow-none" placeholder="Re-Enter Account Number" id="basic-url" aria-describedby="basic-addon3">
                                 </div>
+                                 <div class="input-errors" v-if="v$.confirmaccountnumber.$errors && submitted" >
+
+                                                <div class="error-msg">{{ v$.confirmaccountnumber.$errors[0]?.$message }}</div>
+
+
+                                            </div>
+
                             </div>
                         </div>
 
@@ -39,8 +59,12 @@
                             <div class="col-xl-3 mb-5">
                                 <label for="basic-url" class="form-label">IFSC Code</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control shadow-none" placeholder="IFSC Code" id="basic-url" aria-describedby="basic-addon3">
+                                    <input type="text"  v-model="ifsc_code" class="form-control shadow-none" placeholder="IFSC Code" id="basic-url" aria-describedby="basic-addon3">
                                 </div>
+                                <div class="input-errors" v-if="v$.ifsc_code.$errors && submitted" >
+                                                <div class="error-msg">{{ v$.ifsc_code.$errors[0]?.$message }}</div>
+                                            </div>
+
                             </div>
                             <div class="col-xl-3 mb-5">
                                 <label for="basic-url" class="form-label">Account Type</label>
@@ -62,8 +86,10 @@
                             <div class="col-xl-12 my-5 ">
                                 <div class="d-flex gap-md-5 gap-2 justify-content-end">
                                     <!-- Button trigger modal -->
+                                    <router-link to="/bank-detail">
                                     <button type="button" class="btn_back">Cancel</button>
-                                    <button type="button" class="btn_next">Submit</button>
+                                    </router-link>
+                                    <button type="submit" class="btn_next">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -112,6 +138,17 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
+import ApiClass from '@/Api/Api';
+import useVuelidate from '@vuelidate/core'
+import {
+    required,
+    sameAs,
+    helpers,
+    minLength,
+    maxLength,
+    alphaNum,
+} from "@vuelidate/validators";
+
 export default {
     name: 'AddBank',
     components: {
@@ -119,12 +156,133 @@ export default {
         SettingLayout,
         SubHeading
     },
+
+    setup() {
+        return {
+            v$: useVuelidate()
+        }
+    },
+
     data() {
         return {
+              accountnumber: '',
+            confirmaccountnumber: '',
+            country: '',
+            state: '',
+            ifsc_code: '',
+            alias: '',
+
             bank: true
         }
+    },
+    validations() {
+        return {
+             alias: {
+                required: helpers.withMessage("Alias is Required", required),
+                minLength: minLength(3),
+                maxLength: maxLength(12),
+            },
+
+           
+            accountnumber: {
+                required: helpers.withMessage("Account number is Required", required),
+                minLength: minLength(10),
+                maxLength: maxLength(20),
+            },
+            confirmaccountnumber: {
+                sameAsaccount_number: helpers.withMessage(
+                    "Account Number and Confirm Account Number should match",
+                    sameAs(this.accountnumber)
+                ),
+            },
+            country: {
+                required: helpers.withMessage("Nationality is Required", required),
+            },
+            state: {
+                required: helpers.withMessage("State is Required", required),
+            },
+            ifsc_code: {
+                required: helpers.withMessage("IFSC code is Required", required),
+                alphaNum: helpers.withMessage("IFSC code type is AlphaNumeric", alphaNum),
+                minLength: minLength(11),
+                maxLength: maxLength(11),
+                valid: helpers.withMessage("IFSC code should contain numbers and alphabets", function (value) {
+                    const containsUppercase = /[A-Z a-z]/.test(value)
+                    const containsNumbers = /[0-9]/.test(value)
+                    return containsUppercase && containsNumbers
+                }, ),
+            },
+
+        };
+    },
+
+    methods:{
+          resetForm() {
+        
+                this.accountnumber = "",
+                this.confirmaccountnumber = "",
+                this.country = "",
+                this.state = "",
+                this.ifsc_code = "",
+                this.v$.$reset(); // reset validation
+        },
+
+         async addAccount() {
+            this.submitted=true
+            //VALIDATION
+            const result = await this.v$.$validate()
+            if (!result) {
+                // notify user form is invalid
+                return
+            }
+
+            //FORM DATA
+            let form_data = {
+                alias: this.alias,
+                account_number: this.accountnumber,
+                confirm_account_number: this.confirmaccountnumber,
+                
+                ifsc_code: this.ifsc_code
+            }
+            
+
+            //LOADING TRUE
+            this.loading = true
+
+            //ADD ACCOUNT API CALL
+            let response = await ApiClass.postRequest("userbanks/create", true, form_data)
+
+            //API RESPONSE
+            if (response?.data) {
+                if (response.data.status_code == '0') {
+                    //LOADING FALSE
+                    this.loading = false
+
+                    //ERROR MESSAGE
+                    return this.failed(response.data.message);
+                }
+
+                if (response.data.status_code == '1') {
+                    //SUCCESS MESSAGE 
+                    // this.success(response.data.message)
+                }
+
+                //BANK DEATIL
+                this.bankDetail();
+
+                //RESET FORM
+                this.resetForm()
+
+                //LOADING FALSE
+                this.loading = false
+                this.submitted=false
+                // document.getElementById('hide').click();
+            }
+
     }
 }
+}
+
 </script>
 
 <style scoped>
@@ -179,5 +337,10 @@ export default {
     padding: 8px 15px;
     font-weight: 500;
     min-width: 110px;
+}
+.input-errors{
+     color: var(--red);
+     font-size:12px;
+     font-weight: 500;
 }
 </style>
