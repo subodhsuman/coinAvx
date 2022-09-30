@@ -106,6 +106,7 @@ import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
 import PortfolioData from '@/assets/json/PortfolioData.json'
+import ApiClass from '@/Api/Api';
 export default {
     name: 'SpotHistory',
     components: {
@@ -126,6 +127,15 @@ export default {
 
         }
     },
+    mounted(){
+        this.getTrades();
+    },
+    methods:{
+       async getTrades(){
+           let res= await ApiClass.getNodeRequest("https://node.paisaxc.com/orders/get?all=true&page=1&per_page=25")
+           console.log(res);
+        }
+    }
 }
 </script>
 

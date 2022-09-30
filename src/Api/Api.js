@@ -5,11 +5,18 @@ export default class ApiClass {
   //   static CAPTCHA_SITE_KEY = import.meta.env.VITE_CAPTCHA_SITE_KEY;
   //   static VUE_DOMAIN = import.meta.env.VITE_VUE_DOMAIN;
   // static nodeUrl = "http://192.168.10.71:6800";
+  // static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
+  // static nodeUrl = "http://192.168.10.51:5000/";
+  // static nodeWebsocket = "ws://192.168.10.51:5000/";
+  // static baseUrl = "http://192.168.10.51/backendpsx/public/api/";
+  // static VUE_DOMAIN = "http://192.168.10.20:8080";
+
+// Live links
   static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
-  static nodeUrl = "http://192.168.10.51:5000/";
-  static nodeWebsocket = "ws://192.168.10.51:5000/";
-  static baseUrl = "http://192.168.10.51/backendpsx/public/api/";
-  static VUE_DOMAIN = "http://192.168.10.20:8080";
+  static nodeUrl = "https://node.paisaxc.com/";
+  static nodeWebsocket = "ws://192.46.209.91:4201/";
+  static baseUrl = "http://demo.paisaxc.com/backend/public/api/";
+  static VUE_DOMAIN = "http://demo.paisaxc.com/";
 
   //   static nodeWebsocket = import.meta.env.VITE_NODE_WEB_SOCKET;
   //   static baseUrl = import.meta.env.VITE_BASE_URL;

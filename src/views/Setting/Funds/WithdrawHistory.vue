@@ -26,16 +26,16 @@
 
                                     </tr>
                                 </thead>
-                                <tbody v-if="loading">
-                                    <tr class="text-center" v-for="(data,index) in Widthraw_HistoryData" :key="index">
+                                <tbody v-if="!loading">
+                                    <tr class="text-center" v-for="(data,index) in TransactionList" :key="index">
                                         <td class="py-3 ps-5 text-uppercase text-start">
                                             {{data.currency}}
                                         </td>
                                         <td class="py-3 text-capitalize">{{data.type}}</td>
                                         <td class="py-3">{{data.amount}}</td>
-                                        <td class="py-3">{{data.token_address}}</td>
+                                        <!-- <td class="py-3">{{data.token_address}}</td> -->
                                         <td > {{data.status}} </td>
-                                        <td class="text-end py-3 "> {{data.time}}</td>
+                                        <!-- <td class="text-end py-3 "> {{data.time}}</td> -->
                                     </tr>
                                 </tbody>
                                 <!-- Skeletor Loader -->
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="pagination_box d-flex justify-content-end mt-4" style="color:white">
-                        <pagination v-model="page" :records="recordData" :per-page="perPageData" :options="options" @paginate="referrals" />
+                        <!-- <pagination v-model="page" :records="recordData" :per-page="per_page" :options="options" @paginate="myCallback" /> -->
                     </div>
                 </div>
             </div>
@@ -70,7 +70,8 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
-import PortfolioData from '@/assets/json/PortfolioData.json'
+// import PortfolioData from '@/assets/json/PortfolioData.json'
+import ApiClass from '@/Api/Api';
 export default {
     name: 'WithdraHistory',
     components: {
@@ -80,14 +81,50 @@ export default {
     },
     data() {
         return {
-            page: 1,
-            recordData: 3,
-            perPageData: 1,
-            loading: true,
-            Widthraw_HistoryData: PortfolioData.Widthraw_HistoryData
+             loading: false,
+            trans_length: 0,
+            TransactionList: [],
+            options: {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+            },
 
         }
     },
+    async mounted() {
+        // let response = await ApiClass.getRequest("wallet-trans/get", true);
+        // console.log("wallet transaction response",response);
+        this.loading = true;
+        this.myCallback(1);
+
+    },
+
+    methods: {
+        async myCallback(page) {
+
+            let response = await ApiClass.getRequest("wallet-trans/get?page=" + page);
+
+
+            if (response ?.data) {
+
+                this.TransactionList = response.data.data.data;
+                this.list = response.data.data.data;
+                this.page = response.data.data.current_page;
+                this.from = response.data.data.from;
+                this.to = response.data.data.to;
+                this.last_page = response.data.data.last_page;
+                this.totals = response.data.data.total;
+                this.per_page = response.data.data.per_page;
+                this.links = response.data.data.links;
+            }
+            this.loading = false
+        },
+    },
+
 }
 </script>
 
