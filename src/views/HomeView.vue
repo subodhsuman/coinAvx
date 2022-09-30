@@ -2373,7 +2373,7 @@
 <script>
 import MainheadingComponent from "@/components/MainheadingComponent.vue";
 import BannerComponent from "@/components/BannerComponent.vue";
-import ApiClass from "@/Api/Api";
+import ApiClass from "@/Api/api";
 export default {
   name: "HomeView",
   components: {
@@ -2433,8 +2433,8 @@ export default {
         ws.send(JSON.stringify(data));
       };
       ws.onmessage = function (evt) {
-        var received_msg = JSON.parse(evt.data);
-        // console.log(received_msg.s);
+        let received_msg = JSON.parse(evt.data);
+       
         $this.coin_list?.filter((CoinList) => {
           if (CoinList.symbol == received_msg.s) {
             CoinList.change = received_msg.P;
@@ -2443,7 +2443,7 @@ export default {
         });
       };
       ws.onclose = function () {
-        // console.log("Home Connection is closed...");
+       
       };
       ws.onerror = function (evt) {
         console.log(evt);

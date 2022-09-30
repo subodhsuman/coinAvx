@@ -20,7 +20,6 @@
                   <div>
                     <label for="basic-url" class="form-label">Title</label>
                     <div class="input-group mb-3">
-                      <!-- <span class="input-group-text border-start-0" id="basic-addon1">@</span> -->
                       <input
                         v-model="form.title"
                         type="text"
@@ -59,7 +58,6 @@
                   <div>
                     <label for="basic-url" class="form-label">Name</label>
                     <div class="input-group mb-3">
-                      <!-- <span class="input-group-text border-start-0" id="basic-addon1">@</span> -->
                       <input
                         v-model="form.author_name"
                         type="text"
@@ -83,7 +81,6 @@
                       >Email Address</label
                     >
                     <div class="input-group mb-3">
-                      <!-- <span class="input-group-text border-start-0" id="basic-addon1">@</span> -->
                       <input
                         v-model="form.author_email"
                         type="text"

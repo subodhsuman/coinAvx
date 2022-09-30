@@ -319,7 +319,7 @@ export default {
 .vue-skeletor {
     position: relative;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.12);
+    /* background-color: rgba(0, 0, 0, 0.12); */
 }
 
 .vue-skeletor:not(.vue-skeletor--shimmerless):after {

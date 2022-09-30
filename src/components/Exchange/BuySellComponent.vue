@@ -31,11 +31,15 @@
                 <!--spot BUY box  -->
                 <div class="row buy_sell">
                     <div class="col-md-6 col-xl-6 mb-4 mb-md-0">
-                        <BuySellForm order_side="buy" currency="usdt" />
+                        <BuySellForm order_side="buy" :currency="currency" />
+                        <!-- <BuySellForm order_side="buy" currency="usdt" /> -->
+
                     </div>
                     <!--spot SELL box  -->
                     <div class="col-md-6 col-xl-6">
-                        <BuySellForm order_side="sell" currency="usdt" />
+                        <BuySellForm order_side="sell" :currency="pair_with" :getValDta="getValDta" />
+                        <!-- <BuySellForm order_side="sell" currency="usdt" /> -->
+
                     </div>
                 </div>
             </div>
@@ -52,18 +56,37 @@
 import BuySellForm from '@/Utilites/BuySellForm.vue'
 export default {
     name: 'BuySellComponent',
+    props:{
+        modelValue:Object
+    },
     components: {
         BuySellForm
     },
     data() {
         return {
             clickedAmt: 1,
+            getValDta:{},
+            currency:"",
+            pair_with:""
+
         }
     },
     methods: {
         amount(val) {
             this.clickedAmt = val
         }
+    },
+    watch:{
+        modelValue:function(value){
+            this.getValDta=value,
+            this.currency=value.currency
+            this.pair_with=value.pair_with
+            // console.log("pari with",this.pair_with);
+            // console.log("currency",this.currency);
+            // console.log("buy sell component",this.getValDta);
+        }
+
+
     }
 }
 </script>

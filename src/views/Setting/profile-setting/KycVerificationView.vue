@@ -37,7 +37,7 @@
                     <li :class="second">2. PAN</li>
                     <li :class="third">3. Aadhaar Card</li>
                     <li :class="fourth">4. Selfie</li>
-                    <!-- <li :class="fifth">Selfie</li> -->
+                   
                   </ul>
                 </div>
               </div>
@@ -314,7 +314,6 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header text-center border-0">
-            <!-- <h5 class="modal-title" id="exampleModalLabel">Edit Your Mobile Number</h5> -->
             <button
               type="button"
               class="btn-close shadow-none"
@@ -356,7 +355,7 @@ import {
   required,
   sameAs,
 } from "@vuelidate/validators";
-import ApiClass from "@/Api/Api";
+import ApiClass from "@/Api/api";
 const pancard_regex = helpers.regex(/[A-Z]{5}[0-9]{4}[A-Z]{1}$/);
 const pin_regex = helpers.regex(/^\d{1,9}$/);
 const nan_regex = helpers.regex(/^[a-zA-Z]+$/);

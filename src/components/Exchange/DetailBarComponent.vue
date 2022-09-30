@@ -2,15 +2,20 @@
 <div class="detail_bar">
     <ul class="list-unstyled d-md-flex d-block row justify-content-between text-center align-items-center p-1 mb-0">
         <li class=" col d-flex  align-items-center justify-content-center justify-content-md-start gap-2 mb-3 mb-md-0">
-            <div class="currency_img"> <img src="../../assets/images/btc.png" alt="icon" style="height:65px"></div>
+            <div class="currency_img"> <img :src="allValueDetails.image"  class="img-fluid" alt="icon"></div>
+
             <div class="currency_detail">
-                <h6 class="mb-0">BTC/USDT</h6>
-                <p class="mb-0">$21,462.60</p>
+                <!-- {{allValueDetails}} -->
+                <h6 class="mb-0">{{allValueDetails.currency}}/{{allValueDetails.pair_with}} </h6>
+                <p class="mb-0">{{allValueDetails.price}}</p>
             </div>
         </li>
         <li class="col mb-3 mb-md-0">
             <span> 24 Hour Change</span>
-            <h6> 2.14%</h6>
+            <h6 v-if="!loading"> {{parseFloat(allValueDetails.change).toFixed(2)}} %</h6>
+            <h6 style="flex-basis:20%" v-else><Skeletor /> </h6>
+
+
         </li>
         <li class="col mb-3 mb-md-0">
             <span style="color:var(--green)"> 24H High
@@ -22,7 +27,10 @@
                 </svg>
 
             </span>
-            <h6>₹39,110.82</h6>
+            <h6 v-if="!loading">{{parseFloat(allValueDetails.high)}}</h6>
+            <h6 style="flex-basis:20%" v-else><Skeletor /> </h6>
+            
+
         </li>
         <li class="col mb-3 mb-md-0">
             <span style="color:var(--red)">24H Low
@@ -32,19 +40,54 @@
                 </svg>
 
             </span>
-            <h6> ₹37,708.58</h6>
+            <h6 v-if="!loading">{{parseFloat(allValueDetails.low)}}</h6>
+            <h6 style="flex-basis:20%" v-else><Skeletor /> </h6>
+
         </li>
         <li class="col mb-3 mb-md-0">
-            <span> 24H Vol (USDT)</span>
-            <h6> 37,708483,771,101.8 USDT</h6>
+            <span> 24H Vol ({{allValueDetails.pair_with}})</span>
+            <h6 v-if="!loading"> {{parseFloat(allValueDetails.volume)}} {{allValueDetails.pair_with}}</h6>
+            <h6 style="flex-basis:20%" v-else><Skeletor /> </h6>
+            
         </li>
     </ul>
 </div>
 </template>
 
 <script>
+
+
 export default {
-    name: 'DetailBarComponent.vue'
+    name: 'DetailBarComponent.vue',
+    props:{
+        modelValue:Object
+
+    },
+      data(){
+        return {
+            allValueDetails:{},
+            loading:true,
+        }
+      },
+      
+      watch:{
+        modelValue:function(v){
+            // var abc=v;
+            console.log(Object.values(v).length,"g");
+
+            // this.loading=true;
+            if(Object.values(v).length!=0){
+                this.allValueDetails=v;
+                this.loading=false;
+                console.log("lenghth",this.loading)
+            }
+            else{
+                this.loading=true;
+                console.log("a",this.loading);
+            }
+        }
+      }
+
 }
 </script>
 
@@ -64,6 +107,10 @@ export default {
 
 .detail_bar li span {
     color: var(--text-grey);
+}
+.img-fluid{
+    max-width: 30px;
+    max-height: 30px;
 }
 
 .detail_bar li,

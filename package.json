@@ -1,3 +1,4 @@
+
 {
   "name": "coinavx",
   "version": "0.1.0",
@@ -16,6 +17,8 @@
     "core-js": "^3.8.3",
     "moment": "^2.29.4",
     "sweetalert2": "^11.4.35",
+    "exact-math": "^2.2.3",
+    "lodash": "^4.17.21",
     "v-pagination-3": "^0.1.7",
     "vue": "^3.2.13",
     "vue-recaptcha": "^2.0.3",

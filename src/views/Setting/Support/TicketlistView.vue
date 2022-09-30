@@ -14,7 +14,7 @@
                             <table class="table table-borderless align-middle">
                                 <thead>
                                     <tr class="text-center">
-                                        <th scope="col" class="ps-5 text-start">S.No{{loading}}</th>
+                                        <th scope="col" class="ps-5 text-start">S.No</th>
                                         <!-- <th scope="col">Pairs</th> -->
                                         <th scope="col">Ticket Type</th>
                                         <th scope="col">Title</th>

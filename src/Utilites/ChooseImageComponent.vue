@@ -11,7 +11,7 @@
             </div>
         </div>
     </span>
-    <input  class="file-input" ref="fileInput" type="file" @input="onSelectFile">{{modelvalue}}
+    <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
 </div>
 </template>
 
@@ -41,7 +41,7 @@ export default {
                     this.imageData = e.target.result
                 }
                 reader.readAsDataURL(files[0])
-                this.$emit("update:modelValue", files[0]);
+                this.$emit("update:modelValue", files[0])
 
             }
         }

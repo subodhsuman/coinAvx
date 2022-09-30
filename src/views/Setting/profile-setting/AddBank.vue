@@ -138,7 +138,7 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
-import ApiClass from '@/Api/Api';
+import ApiClass from '@/Api/api';
 import useVuelidate from '@vuelidate/core'
 import {
     required,
@@ -218,12 +218,11 @@ export default {
 
     methods:{
           resetForm() {
-        
-                this.accountnumber = "",
-                this.confirmaccountnumber = "",
-                this.country = "",
-                this.state = "",
-                this.ifsc_code = "",
+                this.accountnumber = "";
+                this.confirmaccountnumber = "";
+                this.country = "";
+                this.state = "";
+                this.ifsc_code = "";
                 this.v$.$reset(); // reset validation
         },
 

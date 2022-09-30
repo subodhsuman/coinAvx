@@ -106,7 +106,7 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
-import ApiClass from '@/Api/Api';
+import ApiClass from '@/Api/api';
 export default {
     name: 'ReferralView',
     components: {
@@ -144,7 +144,7 @@ export default {
         this.referral_code = this.users.referral_code;
 
       this.callback_function();
-        // this.get();
+        
     },
     onMounted() {
         this.callback_function();
@@ -157,7 +157,7 @@ export default {
              let res = await ApiClass.getRequest(
                 "user/getReferrals?page=" + this.current_page + "&per_page=" + this.per_page_data,
             );
-            // console.log(res);
+            
 
             if (res.data.status_code == 1) {
                 this.loading = true;
@@ -172,6 +172,7 @@ export default {
         },
           copy() {
             console.log("hihihihi");
+            
             var test=  document.getElementById("copy_code");
         
              test.select();

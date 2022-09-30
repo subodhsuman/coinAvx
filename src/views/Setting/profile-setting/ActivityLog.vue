@@ -75,7 +75,7 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
-import ApiClass from '@/Api/Api';
+import ApiClass from '@/Api/api';
   import moment from "moment";
 export default {
     name: 'ActivityLog',
