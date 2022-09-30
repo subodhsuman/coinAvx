@@ -109,7 +109,7 @@
 import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SupportData from '@/assets/json/SupportData.json'
-import ApiClass from '@/Api/Api';
+import ApiClass from '@/Api/api';
 export default {
     name: 'TicketlistView',
     components: {

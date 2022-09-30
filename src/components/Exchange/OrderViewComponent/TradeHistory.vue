@@ -75,7 +75,7 @@
     
         
     <script>
-    import ApiClass from "@/api/api";
+    import ApiClass from "@/Api/api";
     export default {
         name: 'TradeHistory',
         data() {

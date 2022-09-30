@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import ApiClass from '@/api/api.js';
+import ApiClass from '@/Api/api';
 // import exactMath from "exact-math";
 // import ExchangeData from '@/assets/json/ExchangeData'
 // import _ from "lodash";

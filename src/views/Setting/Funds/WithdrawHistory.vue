@@ -71,7 +71,7 @@ import SettingLayout from '@/Layouts/SettingLayout.vue';
 import SettingHeading from '@/components/setting/SettingHeading.vue';
 import SubHeading from '@/components/setting/SubHeading.vue';
 // import PortfolioData from '@/assets/json/PortfolioData.json'
-import ApiClass from '@/Api/Api';
+import ApiClass from '@/Api/api';
 export default {
     name: 'WithdraHistory',
     components: {

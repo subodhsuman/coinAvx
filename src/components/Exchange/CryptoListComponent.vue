@@ -106,7 +106,7 @@
 
 <script>
 // import ExchangeData from '@/assets/json/ExchangeData'
-import ApiClass from '@/api/api.js';
+import ApiClass from '@/Api/api';
 import { Skeletor } from 'vue-skeletor';
 export default {
     name: 'CryptoListComponent',

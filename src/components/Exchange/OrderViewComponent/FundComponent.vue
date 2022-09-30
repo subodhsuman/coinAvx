@@ -90,7 +90,7 @@
     </template>
     
     <script>
-         import ApiClass from "@/api/api";
+         import ApiClass from "@/Api/api";
     export default {
         name: 'FundComponent',
         data() {

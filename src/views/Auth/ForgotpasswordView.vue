@@ -50,7 +50,7 @@
     
 <script>
 import AuthLeftComponents from '@/components/auth_components/AuthLeftComponents.vue'
-import ApiClass from '@/Api/Api'
+import ApiClass from '@/Api/api'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 import router from '@/router'

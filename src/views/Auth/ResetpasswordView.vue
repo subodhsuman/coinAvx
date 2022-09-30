@@ -87,7 +87,7 @@
 import { helpers, maxLength, minLength, required } from '@vuelidate/validators';
 
     import AuthLeftComponents from '@/components/auth_components/AuthLeftComponents.vue';
-import ApiClass from '@/Api/Api';
+import ApiClass from '@/Api/api';
 // import { helpers } from '@vuelidate/validators';
     export default {
         name: 'ResetpasswordView',

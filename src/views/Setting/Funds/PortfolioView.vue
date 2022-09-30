@@ -168,7 +168,7 @@ import {
 } from '@vuelidate/validators'
 // import WithdrawModal from '@/components/setting/WithdrawModal.vue';
 // import DepositModal from '@/components/setting/DepositModal.vue';
-import ApiClass from '../../../api/api.js';
+import ApiClass from '@/Api/api';
 export default {
     name: 'PortfolioView',
     setup() {

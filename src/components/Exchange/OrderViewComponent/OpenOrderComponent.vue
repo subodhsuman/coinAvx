@@ -80,7 +80,7 @@
     </template>
     
     <script>
-    import ApiClass from "@/api/api";
+    import ApiClass from "@/Api/api";
     
     // import OpenHistoryVue from './OpenHistory.vue';
     // import OpenOrderComponentVue from '@/components/Future-Trading/OrderViewComponent/OpenOrderComponent.vue';

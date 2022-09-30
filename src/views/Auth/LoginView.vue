@@ -83,7 +83,7 @@ import { required, email,minLength, maxLength } from '@vuelidate/validators'
 import {
     VueRecaptcha
 } from "vue-recaptcha";
-import ApiClass from  '../../Api/Api';
+import ApiClass from  '@/Api/api';
 import router from '@/router';
 
 export default {

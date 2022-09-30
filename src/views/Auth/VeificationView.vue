@@ -51,7 +51,7 @@
 <script>
 import AuthLeftComponents from '@/components/auth_components/AuthLeftComponents.vue'
 import OtpInput from 'vue3-otp-input';
-import ApiClass from '@/Api/Api';
+import ApiClass from '@/Api/api';
 import useVuelidate from '@vuelidate/core';
 import { helpers, maxLength,minLength, required } from '@vuelidate/validators';
 // import { ref } from '@vue/reactivity';
