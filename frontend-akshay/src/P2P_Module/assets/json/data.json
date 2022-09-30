@@ -1,0 +1,743 @@
+{
+    "pair":
+    [
+        {
+            "icon" : "star-gray.svg",
+            "name" : "btc",
+            "price" : "21,767",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "eth",
+            "price" : "2,767",
+            "hchange" : "3.09%",
+            "istrue" : false
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : false
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : false
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "btc",
+            "price" : "21,767",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "eth",
+            "price" : "2,767",
+            "hchange" : "3.09%",
+            "istrue" : false
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : false
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : false
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        },
+        {
+            "icon" : "star-gray.svg",
+            "name" : "bnb",
+            "price" : "800",
+            "hchange" : "3.09%",
+            "istrue" : true
+        }
+    ],
+    "trade": 
+    [
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":true
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":false
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":true
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":false
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":true
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":true
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":false
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":true
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":false
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":true
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":false
+        },
+        {
+            "price":"22,456",
+            "amount":"3",
+            "time" : "12:00",
+            "istrue":true
+        }
+    ],
+    "order":
+    [
+        {
+            "price":"22767",
+            "amount":"1.34",
+            "total":"1.45",
+            "istrue":true,
+            "gradientlr":40,
+            "gradientmr":60
+        },
+        {
+            "price":"22767",
+            "amount":"1.34",
+            "total":"1.45",
+            "istrue":true,
+            "gradientlr":40,
+            "gradientmr":60
+        },
+        {
+            "price":"22767",
+            "amount":"1.34",
+            "total":"1.45",
+            "istrue":true,
+            "gradientlr":40,
+            "gradientmr":60
+        },
+        {
+            "price":"22767",
+            "amount":"1.34",
+            "total":"1.45",
+            "istrue":true,
+            "gradientlr":60,
+            "gradientmr":40
+        },
+        {
+            "price":"22767",
+            "amount":"1.34",
+            "total":"1.45",
+            "istrue":true,
+            "gradientlr":40,
+            "gradientmr":60
+        },
+        {
+            "price":"22767",
+            "amount":"1.34",
+            "total":"1.45",
+            "istrue":true,
+            "gradientlr":70,
+            "gradientmr":30
+        },
+        {
+            "price":"22767",
+            "amount":"1.34",
+            "total":"1.45",
+            "istrue":true,
+            "gradientlr":40,
+            "gradientmr":60
+        },
+        {
+            "price":"22767",
+            "amount":"1.34",
+            "total":"1.45",
+            "istrue":true,
+            "gradientlr":40,
+            "gradientmr":60
+        }
+    ],
+    "activity": 
+    [
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        },
+        {
+            "name":"shib/inr",
+            "time": "12:30:05",
+            "change": "8.5%"
+        }
+    ],
+    "timeline":
+    [
+        {
+            "time":"1m"
+        },
+        {
+            "time":"5m"
+        },
+        {
+            "time":"15m"
+        },
+        {
+            "time":"30m"
+        },
+        {
+            "time":"1h"
+        },
+        {
+            "time":"12h"
+        },
+        {
+            "time":"1d"
+        },
+        {
+            "time":"1w"
+        }
+    ],
+    "orderhistory":
+    [
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"1BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"2BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"3BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"4BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"5BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"6BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"7BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"8BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"9BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"10BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"11BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"12BTC/USDT",
+            "type":"Limit",
+            "side":"Sell",
+            "price":"30.00",
+            "amount":"2.13",
+            "filled":"0.00%",
+            "total":"63.90 USD",
+            "icon":"delete_bin.svg"
+        }
+    ],
+    "tradehis":
+    [
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        },
+        {
+            "date":"2022-04-01  21:01:48",
+            "pair":"BTC/USDT",
+            "side":"Sell",
+            "price":"30.00",
+            "executed":"2.13",
+            "fee":"0.05123456",
+            "role":"-",
+            "total":"0.25887746"
+        }
+    ],
+    "funds": 
+    [
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        },
+        {
+            "coin":"BTC",
+            "bal":"0.0021778",
+            "abal":"0.21255656",
+            "iorder":"0.00000000",
+            "value":"0.0022146"
+        }
+    ],
+    "p2p":
+    [
+        {
+            "orders" : "91 orders",
+            "completion" : "95.80% completion",
+            "price" : "80INR",
+            "available" : "84.42 USDT",
+            "limit" : "₹ 1,000.00 - ₹ 2,080.95",
+            "payment" : "Bank transfer",
+            "trade" : "buy"
+        },
+        {
+            "orders" : "91 orders",
+            "completion" : "95.80% completion",
+            "price" : "80INR",
+            "available" : "84.42 USDT",
+            "limit" : "₹ 1,000.00 - ₹ 2,080.95",
+            "payment" : "Bank transfer",
+            "trade" : "buy"
+        },
+        {
+            "orders" : "91 orders",
+            "completion" : "95.80% completion",
+            "price" : "80INR",
+            "available" : "84.42 USDT",
+            "limit" : "₹ 1,000.00 - ₹ 2,080.95",
+            "payment" : "Bank transfer",
+            "trade" : "buy"
+        },
+        {
+            "orders" : "91 orders",
+            "completion" : "95.80% completion",
+            "price" : "80INR",
+            "available" : "84.42 USDT",
+            "limit" : "₹ 1,000.00 - ₹ 2,080.95",
+            "payment" : "Bank transfer",
+            "trade" : "buy"
+        },
+        {
+            "orders" : "91 orders",
+            "completion" : "95.80% completion",
+            "price" : "80INR",
+            "available" : "84.42 USDT",
+            "limit" : "₹ 1,000.00 - ₹ 2,080.95",
+            "payment" : "Bank transfer",
+            "trade" : "buy"
+        },
+        {
+            "orders" : "91 orders",
+            "completion" : "95.80% completion",
+            "price" : "80INR",
+            "available" : "84.42 USDT",
+            "limit" : "₹ 1,000.00 - ₹ 2,080.95",
+            "payment" : "Bank transfer",
+            "trade" : "buy"
+        }
+    ]
+}
