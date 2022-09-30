@@ -69,19 +69,19 @@
                                 <!-- Skeletor Loader -->
                                 <tbody v-else>
                                     <tr v-for="i in 5" :key="i">
-                                        <td>
+                                         <td style="flex-basis: 33.3%">
                                             <Skeletor />
                                         </td>
-                                        <td>
+                                         <td style="flex-basis: 33.3%">
                                             <Skeletor />
                                         </td>
-                                        <td>
+                                        <td style="flex-basis: 33.3%">
                                             <Skeletor />
                                         </td>
-                                        <td>
+                                        <td style="flex-basis: 33.3%">
                                             <Skeletor />
                                         </td>
-                                        <td>
+                                        <td style="flex-basis: 33.3%">
                                             <Skeletor />
                                         </td>
                                     </tr>

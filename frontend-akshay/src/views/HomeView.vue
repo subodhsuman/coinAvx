@@ -245,7 +245,7 @@
                           <td colspan="6">
                             <div class="link_data text-center">
                               <a
-                                href=""
+                                href="/exchange"
                                 class="text-decoration-none text-capitalize"
                                 >View more markets
                                 <span class="p-1"

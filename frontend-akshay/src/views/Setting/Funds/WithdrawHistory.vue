@@ -38,6 +38,9 @@
                                         <!-- <td class="text-end py-3 "> {{data.time}}</td> -->
                                     </tr>
                                 </tbody>
+                                  <tbody v-if="!loading && TransactionList.length==0">
+                                    <td class="text-center" colspan="5"> No data found</td>
+                                </tbody>
                                 <!-- Skeletor Loader -->
                                 <tbody v-else>
                                     <tr v-for="i in 5" :key="i">

@@ -122,14 +122,10 @@
                   <div class="col-md-4 col-lg-4 col-xl-4 col-xxl-3 mb-5">
                     <label for="basic-url" class="form-label">State</label>
                     <div class="input-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="personal.state"
-                        placeholder="state"
-                        id="basic-url"
-                        aria-describedby="basic-addon3"
-                      />
+                       <select v-model="personal.state" class="form-select" aria-label="Default select example">
+                                                    <option v-for="(state , index) in StateData" :key="index" :value="personal.state.value">{{state.name}}</option>
+                                                </select>
+
                       <div
                         class="input-errors"
                         v-for="error of v$.personal.state.$errors"
@@ -373,13 +369,52 @@ export default {
   },
   data() {
     return {
+      StateData: [
+  { value: "AN", name: "Andaman and Nicobar Islands" },
+  { value: "AP", name: "Andhra Pradesh" },
+  { value: "AR", name: "Arunachal Pradesh" },
+  { value: "AS", name: "Assam" },
+  { value: "BR", name: "Bihar" },
+  { value: "CG", name: "Chandigarh" },
+  { value: "CH", name: "Chhattisgarh" },
+  { value: "DN", name: "Dadra and Nagar Haveli" },
+  { value: "DD", name: "Daman and Diu" },
+  { value: "DL", name: "Delhi" },
+  { value: "GA", name: "Goa" },
+  { value: "GJ", name: "Gujarat" },
+  { value: "HR", name: "Haryana" },
+  { value: "HP", name: "Himachal Pradesh" },
+  { value: "JK", name: "Jammu and Kashmir" },
+  { value: "JH", name: "Jharkhand" },
+  { value: "KA", name: "Karnataka" },
+  { value: "KL", name: "Kerala" },
+  { value: "LA", name: "Ladakh" },
+  { value: "LD", name: "Lakshadweep" },
+  { value: "MP", name: "Madhya Pradesh" },
+  { value: "MH", name: "Maharashtra" },
+  { value: "MN", name: "Manipur" },
+  { value: "ML", name: "Meghalaya" },
+  { value: "MZ", name: "Mizoram" },
+  { value: "NL", name: "Nagaland" },
+  { value: "OR", name: "Odisha" },
+  { value: "PY", name: "Puducherry" },
+  { value: "PB", name: "Punjab" },
+  { value: "RJ", name: "Rajasthan" },
+  { value: "SK", name: "Sikkim" },
+  { value: "TN", name: "Tamil Nadu" },
+  { value: "TS", name: "Telangana" },
+  { value: "TR", name: "Tripura" },
+  { value: "UP", name: "Uttar Pradesh" },
+  { value: "UK", name: "Uttarakhand" },
+  { value: "WB", name: "West Bengal" }
+],
       personal: {
         fname: "",
         country: "",
 
         dob: "",
         address: "",
-        sate: "",
+        state: "",
         pin: "",
       },
       pan: {
@@ -395,6 +430,9 @@ export default {
       self: {
         s_image: "",
       },
+        
+
+
 
       kyc_status: "",
       id_rej: "",
