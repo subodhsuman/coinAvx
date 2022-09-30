@@ -63,7 +63,7 @@
                 </div>
             </div>
             <!-- Content  -->
-            <div class="cryptocurrency_scroll" v-if="loading">
+            <div class="cryptocurrency_scroll" v-if="!loading">
                 <div v-show="fiterItems.length!=0" class="currency_content d-flex border_bottom py-1 pe-2" v-for="(data,index) in fiterItems" :key="index" @click="changeData(data)">
                     <div style="flex-basis:10%" class="ps-2"><img :src="data.image" alt="search icon" class="img-fluid"></div>
                     <div style="flex-basis:30%" class="text-uppercase">{{data.currency}} /{{data.pair_with}} </div>
@@ -79,19 +79,20 @@
 
             <!-- SKELETOR LOADER -->
             <div class="cryptocurrency_scroll" v-else>
-                <div class="currency_content d-flex border_bottom py-1" v-for="i in 10" :key="i">
-                    <div style="flex-basis:10%" class="ps-2">
+                <div class="currency_content d-flex border_bottom py-1 pe-2" v-for="i in 15" :key="i">
+                    <!-- <div style="flex-basis:10%">
+                        <Skeletor :height="30" />
+                    </div> -->
+                    <div class="text-center" style="flex-basis:34%">
                         <Skeletor />
                     </div>
-                    <div style="flex-basis:30%">
+                    <div class="text-end" style="flex-basis:33%">
                         <Skeletor />
                     </div>
-                    <div style="flex-basis:30%">
+                    <div class="text-end" style="flex-basis:33%">
                         <Skeletor />
                     </div>
-                    <div style="flex-basis:30%">
-                        <Skeletor />
-                    </div>
+
                 </div>
             </div>
 
@@ -106,62 +107,66 @@
 <script>
 // import ExchangeData from '@/assets/json/ExchangeData'
 import ApiClass from '@/api/api.js';
+import { Skeletor } from 'vue-skeletor';
 export default {
     name: 'CryptoListComponent',
+    components: { Skeletor },
     props: {
-        modelValue:Object,
+        modelValue: Object,
     },
 
     data() {
         return {
             loading: true,
             allDetails: [],
-            allData:[],
+            allData: [],
             ticker: [],
             item_tabs: {},
             search: "",
             isAsc: false,
             showNum: 1,
-            key: ''
+            key: '',
+            isActive: false
 
         }
     },
     methods: {
 
         TabList(item) {
-            console.log("item", item)
+            // console.log("item", item)
             this.tab = item;
             this.allDetails = this.item_tabs[item];
 
         },
         async getCrypto() {
             var $this = this;
+            this.loading=true;
             let result = await ApiClass.getNodeRequest("list-crypto/get", false);
-            this.allDetails = result.data.data || {};
-            //   console.log("all data",this.allDetails);
-            this.item_tabs = Object.assign(this.allDetails, this.item_tabs)
-            this.ticker = result.data.tickers;
-            console.log("tikcers", this.ticker)
+   
+            if (result?.data?.status_code == 1) {
+                this.allDetails = result.data.data || {};
+                this.item_tabs = Object.assign(this.allDetails, this.item_tabs)
+                this.ticker = result.data.tickers;
+                this.loading=false;
+                // console.log("tikcers", this.ticker)
+            }
+            // if (result?.data?.status_code == 0) {
+            // //     this.loading = false;
+            // // }
 
             this.TabList('USDT');
 
             const sub = this.ticker.map((e) => e.toLowerCase() + "@ticker")
-            console.log("ticker value", sub);
+            // console.log("ticker value", sub);
 
+            for (let key in this.allDetails) {
+                this.allData = this.allData.concat(this.allDetails[key])
+                // console.log("slslsllsls",this.allData);
+            }
 
-            for(let key in this.allDetails) {
-                  this.allData = this.allData.concat(this.allDetails[key])
-                    // console.log("slslsllsls",this.allData);
-                }
-        
-
-              const findSyb = this.allData.find(tree => tree.symbol== this.modelValue.symbol);//By default show of value for BTCUSTD
-               //   console.log("slsls",findSyb);
-              this.$emit('update:modelValue',findSyb)
-
-
-
-              
+            const findSyb = this.allData.find(tree => tree.symbol == this.modelValue.symbol); //By default show of value for BTCUSTD
+            //   console.log("slsls",findSyb);
+            this.$emit('update:modelValue', findSyb)
 
             const data = {
                 method: "SUBSCRIBE",
@@ -201,7 +206,7 @@ export default {
 
         },
         showIcon(num, keyValue) {
-            console.log("show icon", num, keyValue);
+            // console.log("show icon", num, keyValue);
             this.isAsc = !this.isAsc;
             //  console.log("isAccending order",this.isAsc);
 
@@ -213,9 +218,13 @@ export default {
 
         },
         changeData(data) {
-            this.$emit('update:modelValue',data)
+            this.$emit('update:modelValue', data)
             // console.log("change data",data);
-        }
+        },
+        myActive() {
+         this.isActive = !this.isActive;
+      
+           }
 
     },
     watch: {
@@ -259,6 +268,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .nav-link {
     color: var(--avx-white);
     border-bottom: 1px solid transparent;

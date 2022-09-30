@@ -9,12 +9,12 @@
                             <CryptoListComponent  v-model="currencyData" />
                         </div>
                         <div class="col-md-6 col-xl-6  px-0 border_end">
-                            <OrderDepthComponent />
+                            <OrderDepthComponent  v-model="currencyData"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-xl-6 px-0 border_end">
-                            <TradeHistoryComponent />
+                            <TradeHistoryComponent v-model="currencyData" />
                         </div>
                         <div class="col-md-6 col-xl-6  pe-0 border_end">
                             <MarketActivityComponent />
@@ -32,7 +32,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xl-12">
-                            <BuySellComponent />
+                            <BuySellComponent  v-model="currencyData" />
                         </div>
                     </div>
 

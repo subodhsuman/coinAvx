@@ -5,12 +5,23 @@ import store from '../store/index.js';
 export default class ApiClass {
 
     //LOCAL LINKS RAMAN SIR
-    static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
-    static nodeUrl = "http://192.168.10.51:5000/";
-    static nodeWebsocket = "ws://192.168.10.51:5000/";
-    static baseUrl = "http://192.168.10.51/backendpsx/public/api/";
+    // static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
+    // static nodeUrl = "http://192.168.10.51:5000/";
+    // static nodeWebsocket = "ws://192.168.10.51:5000/";
+    // static baseUrl = "http://192.168.10.51/backendpsx/public/api/";
 
-    static VUE_DOMAIN = "http://192.168.10.212:8080/";
+    // static VUE_DOMAIN = "http://192.168.10.212:8080/";
+
+    // live link
+
+    static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
+    static nodeUrl = "https://node.paisaxc.com/";
+    static nodeWebsocket = "ws://192.46.209.91:4201/";
+    static baseUrl = "http://demo.paisaxc.com/backend/public/api/";
+    static VUE_DOMAIN = "http://demo.paisaxc.com/";
+
+
+
     // static stakingbase = "http://192.168.11.116:5000/";
 
 
