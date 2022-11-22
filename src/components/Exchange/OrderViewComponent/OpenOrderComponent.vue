@@ -110,7 +110,7 @@
         mounted() {
             this.OpenOrderComponentis()
     
-            console.log('GGGG', this.page);
+     
     
         },
     
@@ -120,7 +120,7 @@
                     return;
                 }
                 let response = await ApiClass.getNodeRequest("orders/get?all=" + true + "&page=" + this.page + "&per_page=" + this.perPageData, true);
-                console.log('vineet', response)
+            
                 this.resalldata = response.data.data.data
                 this.page = response.data.data.page;
                 this.perPageData = response.data.data.per_page;

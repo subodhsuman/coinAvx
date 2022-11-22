@@ -73,17 +73,17 @@ export default {
       watch:{
         modelValue:function(v){
             // var abc=v;
-            console.log(Object.values(v).length,"g");
+            // console.log(Object.values(v).length,"g");
 
             // this.loading=true;
             if(Object.values(v).length!=0){
                 this.allValueDetails=v;
                 this.loading=false;
-                console.log("lenghth",this.loading)
+                // console.log("lenghth",this.loading)
             }
             else{
                 this.loading=true;
-                console.log("a",this.loading);
+                // console.log("a",this.loading);
             }
         }
       }

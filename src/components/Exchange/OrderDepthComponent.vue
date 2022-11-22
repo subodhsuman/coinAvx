@@ -14,7 +14,9 @@
 
     <!-- order depth content -->
     <div class="order_depth_scroll" v-if="!loding">
-        <div class="od_sell_content d-flex justify-content-between py-1 od_border px-2" v-for="(data , index) in asks_data" :key="index">
+        <div class="od_sell_content d-flex justify-content-between py-1 od_border px-2" v-for="(data , index) in asks_data" :key="index"
+            :style="`background: linear-gradient(90deg, rgba(255, 255, 255, 0) ${(100-((data[1] *100) / maxVolume ).toFixed(2))}%, var(--progress-red)${((data[1] *100) / maxVolume ).toFixed(2)}%);`"
+        >
             <div style="flex-basis:33.3%; color: var(--red) "  >{{parseFloat(data[0])}} </div>
             <div class="text-center" style="flex-basis:33.3%">{{parseFloat(data[1])}}</div>
             <div class="text-end" style="flex-basis:33.3%">{{parseFloat( data[0] * data[1]).toFixed(2)}}</div>
@@ -46,10 +48,12 @@
 
     <!-- order depth content -->
     <div class="order_depth_scroll"  v-if="!loding">
-        <div class="od_buy_content d-flex justify-content-between py-1 od_border px-2" v-for="(data , index) in bids_data" :key="index">
+        <div class="od_buy_content d-flex justify-content-between py-1 od_border px-2" v-for="(data , index) in bids_data" :key="index"
+            :style="`background: linear-gradient(90deg, rgba(255, 255, 255, 0) ${(100-((data[1] *100) / maxVolume ).toFixed(2))}%, var(--progress-green)${((data[1] *100) / maxVolume ).toFixed(2)}%);`"
+        >
             <div style="flex-basis:33.3%; color: var(--green);">{{parseFloat(data[0])}} </div>
             <div class="text-center" style="flex-basis:33.3%">{{parseFloat(data[1])}}</div>
-            <div class="text-end" style="flex-basis:33.3%">{{parseFloat( data[0] * data[1]).toFixed(2)}}</div>
+            <div class="text-end" style="flex-basis:33.3%">{{parseFloat( data[0] * data[1]).toFixed(2)}} </div>
         </div>
     </div>
 
@@ -65,15 +69,16 @@
     </div>
 
      <!--  end for skeletor -->
+
        
 </div>
 </template>
 
 <script>
 import ApiClass from '@/Api/api';
-// import exactMath from "exact-math";
+import exactMath from "exact-math";
 // import ExchangeData from '@/assets/json/ExchangeData'
-// import _ from "lodash";
+import _ from "lodash";
 export default {
     name: 'OrderDepthComponent',
     props: {
@@ -115,8 +120,11 @@ export default {
                 this.loding=false;
              }
             
+
+
             //  var sum =_.sumBy(this.asks_data, function(o) { console.log('o',o); return parseFloat(o[1] )});
             //   this.getMaxVol(sum);
+
 
             const sub = this.getSyb.toLowerCase() + "@depth20@1000ms";
             // console.log("ord", sub);
@@ -152,14 +160,7 @@ export default {
             }
 
         },
-        // maxVal(){
-        //       var cal=this.asks_data.concat(this.bids_data)
-        //       console.log("all",cal)
-        // }
-
-        // async getMaxVol(s){
-        //     console.log("getMaxValue",s);
-        // }
+        
         
     },
     watch:{
@@ -172,12 +173,45 @@ export default {
             this.loading=false;
         }
     },
-    //  computed:{
-    //     maxVal(){
-    //           var cal=this.asks_data.concat(this.bids_data)
-    //           console.log("all",cal)
-    //     }
-    //  },
+     computed:{
+        maxVal(){
+              var cal=this.bids_data.concat(this.bids_data)
+              let maxv = _.maxBy(cal, (el) => parseFloat(el[1]));
+                  return maxv ?.[1] || 0;
+                 
+        },
+          buy_Order(){
+              let buy=0;
+              return this.bids_data.map((el)=>{
+                    let sum=exactMath.add(buy, el[1])
+                    buy=sum;
+                    // return console.log("sum buy order",buy);
+                    return [parseFloat(el[0]),sum];
+              })
+
+        },
+
+          sell_Order(){
+              let sel=0;
+              return this.asks_data.map((el)=>{
+                    let sum =exactMath.add(sel, el[1]);
+                    sel=sum;
+                    return [parseFloat(el[0]),sum];
+              })
+          
+
+        },
+        maxVolume(){
+         let maxVolue_buy =  _.last(this.buy_Order)?.[1] || 0;
+           let maxVolue_sell=_.last(this.sell_Order)?.[1] || 0;
+        
+           return _.gt(parseFloat(maxVolue_buy), parseFloat(maxVolue_sell)) ? parseFloat(maxVolue_buy) :parseFloat(maxVolue_sell)
+
+        }
+
+
+     },
+     
   
 
 }
@@ -213,13 +247,15 @@ export default {
 .od_sell_content {
     color: var(--avx-white);
     font-size: 12px;
+    /*
     background: linear-gradient(90deg, rgba(255, 255, 255, 0)50%, var(--progress-red)50%);
+    */
 }
 
 .od_buy_content {
     color: var(--avx-white);
     font-size: 12px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0)50%, var(--progress-green)50%);
+    /* background: linear-gradient(90deg, rgba(255, 255, 255, 0)50%, var(--progress-green)50%); */
 }
 
 .od_border {

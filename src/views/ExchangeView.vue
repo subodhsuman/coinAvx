@@ -49,7 +49,7 @@
 </template>
 
 <script>
-// import ApiClass from "@/api/api";
+import ApiClass from "@/Api/api";
 import CryptoListComponent from '@/components/Exchange/CryptoListComponent.vue'
 import OrderDepthComponent from '@/components/Exchange/OrderDepthComponent.vue'
 import TradeHistoryComponent from '@/components/Exchange/TradeHistoryComponent.vue'
@@ -84,19 +84,19 @@ export default {
             // console.log("value of exchange",this.currencyData);
         },
     },
-    //     async created() {
-    //     let res = await ApiClass.getNodeRequest("dashboard/all-symbols", false);
-
-    //     var isPresent = res?.data.data.find((s) => s == this.$route.query.s)
-    //         ? true
-    //         : false; //symbol is there
-    //     if (isPresent) {
-    //         this.currencyData.symbol = this.$route.query.s;
-    //     } else {
-    //         this.currencyData.symbol = "BTCUSDT";
-    //         this.$router.push("/exchange");
-    //     }
-    // },
+        async created() {
+        let res = await ApiClass.getNodeRequest("dashboard/all-symbols", false);
+    
+        var isPresent = res.data.data.find((s) => s == this.$route.query.s)
+            ? true
+            : false; //symbol is there
+        if (isPresent) {
+            this.currencyData.symbol = this.$route.query.s;
+        } else {
+            this.currencyData.symbol = "BTCUSDT";
+            this.$router.push("/exchange");
+        }
+    },
 
 
  

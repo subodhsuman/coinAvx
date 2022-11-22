@@ -4,19 +4,35 @@ export default class ApiClass {
   //   static rateURl = import.meta.env.VITE_RATE_URL;
   //   static CAPTCHA_SITE_KEY = import.meta.env.VITE_CAPTCHA_SITE_KEY;
   //   static VUE_DOMAIN = import.meta.env.VITE_VUE_DOMAIN;
-  // static nodeUrl = "http://192.168.10.71:6800";
+
+
   // static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
-  // static nodeUrl = "http://192.168.10.51:5000/";
-  // static nodeWebsocket = "ws://192.168.10.51:5000/";
-  // static baseUrl = "http://192.168.10.51/backendpsx/public/api/";
+  // static nodeUrl = "http://192.168.11.136:3000/";
+  // static nodeWebsocket ="ws://192.168.11.136:3000/";
+  // static baseUrl = "http://192.168.11.136/coinavx/api/";
   // static VUE_DOMAIN = "http://192.168.10.20:8080";
 
-// Live links
+
+  //ranjit sir.
   static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
-  static nodeUrl = "https://node.paisaxc.com/";
-  static nodeWebsocket = "ws://192.46.209.91:4201/";
-  static baseUrl = "http://demo.paisaxc.com/backend/public/api/";
-  static VUE_DOMAIN = "http://demo.paisaxc.com/";
+  static nodeUrl = "git push -u origin main/";
+  static nodeWebsocket ="ws://192.168.11.60:3000/";
+  static baseUrl = "http://192.168.11.60:8000/api/";
+  static VUE_DOMAIN = "http://192.168.10.20:8080";
+
+
+
+
+
+
+
+
+// Live links
+  // static CAPTCHA_SITE_KEY = "6LeA8aMeAAAAAIZ430h3mJAoaOWKWOZJiIp_5Mag";
+  // static nodeUrl = "https://node.paisaxc.com/";
+  // static nodeWebsocket = "ws://192.46.209.91:4201/";
+  // static baseUrl = "http://demo.paisaxc.com/backend/public/api/";
+  // static VUE_DOMAIN = "http://demo.paisaxc.com/";
 
   //   static nodeWebsocket = import.meta.env.VITE_NODE_WEB_SOCKET;
   //   static baseUrl = import.meta.env.VITE_BASE_URL;

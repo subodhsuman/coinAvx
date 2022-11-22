@@ -64,12 +64,13 @@
             </div>
             <!-- Content  -->
             <div class="cryptocurrency_scroll" v-if="!loading">
-                <div v-show="fiterItems.length!=0" class="currency_content d-flex border_bottom py-1 pe-2" v-for="(data,index) in fiterItems" :key="index" @click="changeData(data)">
+                <div v-show="fiterItems.length!=0" class="currency_content d-flex border_bottom py-1 pe-2" :class="ind==index?'isActive':''" v-for="(data,index) in fiterItems" :key="index" @click="changeData(data,index)">
                     <div style="flex-basis:10%" class="ps-2"><img :src="data.image" alt="search icon" class="img-fluid"></div>
                     <div style="flex-basis:30%" class="text-uppercase">{{data.currency}} /{{data.pair_with}} </div>
                     <div style="flex-basis:30%">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill: var(--avx-white)" viewBox="0 0 320 512">
-                            <path d="M0 64C0 46.3 14.3 32 32 32H96h16H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H231.8c9.6 14.4 16.7 30.6 20.7 48H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H252.4c-13.2 58.3-61.9 103.2-122.2 110.9L274.6 422c14.4 10.3 17.7 30.3 7.4 44.6s-30.3 17.7-44.6 7.4L13.4 314C2.1 306-2.7 291.5 1.5 278.2S18.1 256 32 256h80c32.8 0 61-19.7 73.3-48H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H185.3C173 115.7 144.8 96 112 96H96 32C14.3 96 0 81.7 0 64z" /></svg>{{parseFloat(data.price)}} </div>
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill: var(--avx-white)" viewBox="0 0 320 512">
+                            <path d="M0 64C0 46.3 14.3 32 32 32H96h16H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H231.8c9.6 14.4 16.7 30.6 20.7 48H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H252.4c-13.2 58.3-61.9 103.2-122.2 110.9L274.6 422c14.4 10.3 17.7 30.3 7.4 44.6s-30.3 17.7-44.6 7.4L13.4 314C2.1 306-2.7 291.5 1.5 278.2S18.1 256 32 256h80c32.8 0 61-19.7 73.3-48H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H185.3C173 115.7 144.8 96 112 96H96 32C14.3 96 0 81.7 0 64z" /></svg> -->
+                            {{parseFloat(data.price)}} </div>
                     <div style="flex-basis:30%" class="text-end" :style="data.change > 0 ? 'color:var(--green);' : 'color:var(--red);'">{{parseFloat((data.change)).toFixed(2)}}%</div>
                 </div>
                 <div v-if="fiterItems.length==0" class="currency_content d-flex border_bottom py-1 pe-2">
@@ -126,6 +127,7 @@ export default {
             isAsc: false,
             showNum: 1,
             key: '',
+            ind:"",
             isActive: false
 
         }
@@ -142,6 +144,7 @@ export default {
             var $this = this;
             this.loading=true;
             let result = await ApiClass.getNodeRequest("list-crypto/get", false);
+
    
             if (result?.data?.status_code == 1) {
                 this.allDetails = result.data.data || {};
@@ -217,9 +220,12 @@ export default {
             // console.log("key order", this.key);
 
         },
-        changeData(data) {
+        changeData(data,index) {
+            this.ind = index;
             this.$emit('update:modelValue', data)
-            // console.log("change data",data);
+            // this.$route.query.s = data.symbol;
+            this.$router.push({ path: 'exchange', query: { s: data.symbol }})
+            console.log("change data",this.$route.query.s);
         },
         myActive() {
          this.isActive = !this.isActive;
@@ -268,7 +274,9 @@ export default {
 </script>
 
 <style scoped>
-
+.isActive{
+    border-left: 1px solid var(--avx-white);
+}
 
 .nav-link {
     color: var(--avx-white);
